@@ -4,16 +4,19 @@ public class Funciones {
 	
 	//Declaramos las variables y los arrays necesarios.
 	
-	final int TAM= 20;
-	
-	public static int[] dibujaTablero {
+	//En esta función se supone que vamos a pintar el tablero inicial.
+	public static char[] dibujaTablero (int tam){
 		
-		//Hacemos el array unidimensional que será el tablero.
-		int []tabla= new int[TAM];
+		//Vamos a definir este tablero como char, para poder pintar los 0 como "-".
+		char[] tablero = new char [tam];
+		
+		
 		
 		
 		//Devolvemos la tabla.
-		return tabla;
+		return tablero;
 	}
+	
+	
 
 }

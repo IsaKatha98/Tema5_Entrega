@@ -7,7 +7,7 @@ public class Functions {
 	static final double MAX_PUNTOS=7.5;
 	
 	
-	public static double[] rellenaMazo (double[] mazo) {
+	/*public static double[] rellenaMazo (double[] mazo) {
 		
 		for (int i=0; i<mazo.length;i++) {
 			
@@ -17,7 +17,7 @@ public class Functions {
 			} 
 			
 		}
-	}
+	}*/
 
 	public static double randomCartas() {
 

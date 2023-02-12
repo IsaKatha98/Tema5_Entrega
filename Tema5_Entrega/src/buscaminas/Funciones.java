@@ -47,11 +47,10 @@ public class Funciones {
 	 * 
 	 */
 
-	public static char[] colocaMinas (char[] tableroAux) {
+	public static char[] colocaMinas(char[] tableroAux) {
 
 		int index; // posición del array donde se colocarán las minas.
 		int contadorMinas = 0; // contador de minas.
-		
 
 		// Rellenamos el tablero de 0, de forma inicial.
 		for (int i = 0; i < tableroAux.length; i++) {
@@ -71,39 +70,105 @@ public class Funciones {
 
 				// Ponemos la mina.
 				tableroAux[index] = '*';
-				
-				//Ahora, añadimos un 1 a la izquierda y otro a la derecha.
-				if (tableroAux[index]=='*') {
+
+				contadorMinas++;
+
+				// Comprobamos los bordes.
+				// En caso de que estemos en borde izquierdo y haya una mina, se suma 1 a la
+				// derecha.
+				if (bordeIzq(index)) {
+
+					if (!comprobarMinaDer(tableroAux, index)) {
+
+						tableroAux[index + 1] += 1;
+
+					}
+
+					// En caso de que estamos en el borde derecho y haya una mina, se suma a la
+					// izquierda.
+				} else if (bordeDer(index)) {
+
+					if (!comprobarMinaIzq(tableroAux, index)) {
+
+						tableroAux[index - 1] += 1;
+
+					}
+
+					// En caso de que no estemos en ninguno de los límites (es decir, casillas del
+					// centro), hacemos las siguientes comprobaciones.
+				} else {
+
+					// En caso de que haya una mina a la izquierda de index
+					if (!comprobarMinaIzq(tableroAux, index)) {
+
+						tableroAux[index - 1] += 1;
+
+						
+					} 
 					
-					tableroAux[index +1]+=1;
-					
-					tableroAux [index -1]+=1;
-					
-				
-					
+					// En caso de que haya una mina a la derecha de index
+					if (!comprobarMinaDer(tableroAux, index)) {
+
+						tableroAux[index + 1] += 1;
+
+					}
+
 				}
-					
-			// Si ya había una, le quitamos 1 al contadorMinas.
-			} else {
-
-				contadorMinas--;
-
 			}
-
-			// Contamos uno en el contadorMinas.
-			contadorMinas++;
-
 		}
 
 		return tableroAux;
 
 	}
-	
-	
 
-	
-	public static boolean bordeIzq (int index) {
-		
+	/**
+	 * Función que comprueba si hay una mina a la izquierda de la casilla
+	 * introducida.
+	 * 
+	 * @param tableroAux es el tablero que se está rellenando con minas y con
+	 *                   pistas.
+	 * @param index      posición que indica una casilla del tablero.
+	 * @return mina un booleano que nos dice si hay una mina o no a la izquierda de
+	 *         la casilla indicada.
+	 */
+	public static boolean comprobarMinaIzq(char[] tableroAux, int index) {
+
+		boolean mina = false;
+
+		if (tableroAux[index - 1] == '*') {
+
+			mina = true;
+
+		}
+		return mina;
+
+	}
+
+	/**
+	 * Función que comprueba si hay una mina o no a la derecha de la casilla
+	 * introducida.
+	 * 
+	 * @param tableroAux es el tablero que se está rellenando con minas y con
+	 *                   pistas.
+	 * @param index      posición que indica una casilla del tablero.
+	 * @return mina un booleano que nos dice si hay una mina o no a la derecha de la
+	 *         casilla indicada.
+	 */
+	public static boolean comprobarMinaDer(char[] tableroAux, int index) {
+
+		boolean mina = false;
+
+		if (tableroAux[index + 1] == '*') {
+
+			mina = true;
+
+		}
+		return mina;
+
+	}
+
+	public static boolean bordeIzq(int index) {
+
 		boolean borde = false;
 
 		if (index == 0) {
@@ -120,7 +185,7 @@ public class Funciones {
 	 * @return Devuelve un booleano que nos dice si estamos en el borde o no
 	 */
 	public static boolean bordeDer(int index) {
-		
+
 		boolean borde = false;
 
 		if (index == (TAM - 1)) {
@@ -128,17 +193,16 @@ public class Funciones {
 		}
 		return borde;
 	}
-	
-	
-	public static boolean pierde (char[] tableroAux, int casilla) {
-		
-		boolean pierde= false;
-		
-		if (tableroAux[casilla]=='*') {
-			
-			pierde= true;
+
+	public static boolean pierde(char[] tableroAux, int casilla) {
+
+		boolean pierde = false;
+
+		if (tableroAux[casilla] == '*') {
+
+			pierde = true;
 		}
-		
+
 		return pierde;
 	}
 

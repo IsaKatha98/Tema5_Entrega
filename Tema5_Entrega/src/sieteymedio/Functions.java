@@ -14,7 +14,7 @@ public class Functions {
 			if (i>7) {
 				
 				mazo[i]=0.5;
-			} else
+			} 
 			
 		}
 	}

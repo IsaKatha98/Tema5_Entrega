@@ -7,38 +7,41 @@ public class Functions {
 	static final double MAX_PUNTOS=7.5;
 	
 	
-	/*public static double[] rellenaMazo (double[] mazo) {
+	public static double[] rellenaMazo (double[] mazo) {
 		
 		for (int i=0; i<mazo.length;i++) {
 			
-			if (i>7) {
+			mazo[i]=i+1;
+			
+			if (i>=7) {
 				
 				mazo[i]=0.5;
 			} 
 			
 		}
-	}*/
-
-	public static double randomCartas() {
-
-		double valorCarta;
-
-		valorCarta = (int) (Math.random()* 10 )+1;
 		
-		if (valorCarta>7) {
-			
-			valorCarta=0.5;
-		}
+		return mazo;
+		
+	}
 
-		return valorCarta;
+	public static double randomCartas(double [] mazo) {
+		
+		double valor;
+		int index;
+
+		index = (int) (Math.random()* 9 )+1;
+		
+		valor=mazo[index];
+		
+		return valor;
+	
 	}
 	
-	public static String conversionCarta (double valorCarta) {
+	public static String conversionCarta (double valor) {
 		
-		int valor;
 		String conversion="";
 		
-		switch ((int) valorCarta) {
+		switch ((int) valor) {
 			
 		case 1:
 			
@@ -77,11 +80,12 @@ public class Functions {
 		
 		}
 		
-		if (valorCarta==0.5) {
+		if (valor==0.5) {
 			
-			valor= (int)(Math.random()*3);
+			int random;
+			random= (int)(Math.random()*3)+1;
 			
-			switch (valor) {
+			switch (random) {
 			
 			case 1: 
 				
@@ -130,7 +134,7 @@ public class Functions {
 
 		case 3:
 
-			valorPalo = "de espadas.";
+			valorPalo = " de espadas.";
 			break;
 
 		case 4:
@@ -143,5 +147,18 @@ public class Functions {
 		return valorPalo;
 
 	}
+	
+	public static boolean fin(double valor) {
+
+		boolean fin = false;
+
+		if () {
+
+			pierde = true;
+		}
+
+		return pierde;
+	}
+
 
 }

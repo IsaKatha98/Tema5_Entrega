@@ -22,8 +22,8 @@ public class Main {
 		System.out.println("Bienvenido/a, se va a iniciar el juego del buscaminas.\n"); ;
 		System.out.println(Arrays.toString(Funciones.dibujaTablero( tableroUsuario)));
 		
-		System.out.println("\n Tablero auxiliar: ");
-		System.out.println(Arrays.toString(Funciones.colocaMinas(tablero)));
+
+		tablero=Funciones.colocaMinas(tablero);
 		
 		
 		do {
